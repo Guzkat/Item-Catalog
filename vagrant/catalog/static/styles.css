@@ -1,0 +1,19 @@
+body {
+    font-family: sans-serif;
+    background-color: #6bc6cc
+}
+
+h1 {
+	color: #c22222;
+	text-align: center;
+}
+
+h1 {
+    border-bottom: 5px solid #eee;
+}
+
+a {
+    text-decoration: none;
+    color: #16160f;
+    font-size: 1.3em;
+}

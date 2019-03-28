@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <script> function load_home() { window.location = 'http://localhost:8000/stores/'; }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <button class="fa fa-home" onclick="load_home()">Home</button>
+    <h1>{{store.name}}</h1>
+    </br>
+
+            {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            
+        <ul>
+        {% for message in messages %}
+            <li><strong>{{message}}</strong></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </br> 
+
+    {% for item in items %}
+  
+    {{item.brand}}
+    </br>
+    </br> 
+
+    {{item.price}}
+    </br>
+    </br>
+
+    {{item.size}}
+    </br>
+    </br>
+
+    {{item.description}}
+    </br>
+    </br>
+
+    {{item.series}}
+    </br>
+    </br>
+
+    {{item.year}}
+    </br>
+    </br>
+    
+    <a href="{{url_for('editTv', store_id = store.id, tv_id = item.id) }}"><button type="button">Edit</a></button>
+    <a href="{{url_for('deleteTv', store_id = store.id, tv_id = item.id ) }}"><button type="button">Delete</a></button>
+    </br>
+
+    {% endfor %}
+
+  </body>
+
+</html>

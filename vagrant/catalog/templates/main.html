@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script> function load_logout() { window.location = 'http://localhost:8000/tvs'; }</script>
+</head>
+
+<body>
+    <button type="button" style="float:right" onclick="load_logout()">Sign out</button>
+    </br>
+    </br>
+    
+        <h1>{{store.name}}</h1>
+        </br>
+        
+                {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            
+            <ul>
+            {% for message in messages %}
+                <li><strong>{{message}}</strong></li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            
+        <a href="{{url_for('newTv', store_id = store.id,)}}">Create New Tv</a>
+        </br>
+        </br>
+
+        {% for item in items %}
+        </br>
+        </br>
+
+        <a href="{{url_for('showTv', store_id = store.id, tv_id = item.id)}}">{{item.brand}}</a>
+        </br>
+        </br>
+        {% endfor %}
+        
+    </body>
+    
+</html>

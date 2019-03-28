@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    <script> function load_home() { window.location = 'http://localhost:8000/stores/'; }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <button class="fa fa-home" onclick="load_home()">Home</button>
+    <h1> Edit Tv </h1>
+
+<form action="{{url_for('editTv', store_id = store_id, tv_id = item.id)}}" method='POST'>
+
+    <p>Brand:</p>
+    <input type='text' size='30' name='brand'>
+    
+    <p>Price:</p>
+    <input type='text' size='30' name='price'>
+    
+    <p>Size:</p>
+    <input type='text' size='30' name='size'>
+    
+    <p>Description:</p>
+    <input type='text' size='30' name='description'>
+    
+    <p>Series:</p>
+    <input type='text' size='30' name='series'>
+    
+    <p>Year:</p>
+    <input type='text' size='30' name='year'>
+    </br>
+    </br>
+
+<input type='submit'  value='Edit'>
+
+<a href = "{{url_for('showTv', store_id = store_id, tv_id = item.id)}}"><button type="button">Cancel</a></button>
+
+</form>
+
+</body>
+
+</html>
